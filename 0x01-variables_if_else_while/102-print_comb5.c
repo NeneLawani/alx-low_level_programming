@@ -1,34 +1,29 @@
 #include <stdio.h>
-
 /**
- * main - prints all possible combinations of three digits
- * Return: Always 0 (Success)
+ * main - Prints all possible combinations of two two-digit numbers.
+ *
+ * Return: 0
  */
 
 int main(void)
 {
-	int ones = '0';
-	int tens = '0';
-	int hundreds = '0';
+	int i, j;
 
-	for (hundreds = '0'; hundreds <= '9'; hundreds++)
+	for (i = 0; i <= 99; i++)
 	{
-		for (tens = '0'; tens <= '9'; tens++)
+		for (j = 0; j <= 99; j++)
 		{
-			for (ones = '0'; ones <= '9'; ones++)
+			if (i < j && i != j)
 			{
-				if (!((ones == tens) || (tens == hundreds) ||
-							(tens > ones) || (hundreds > tens))) /*eliminates repitition*/
+				putchar((i / 10) + '0');
+				putchar((i % 10) + '0');
+				putchar(' ');
+				putchar((j / 10) + '0');
+				putchar((j % 10) + '0');
+				if (i != 98 || j != 99)
 				{
-					putchar(hundreds);
-					putchar(tens);
-					putchar(ones);
-					if (!(ones == '9' && hundreds == '7'
-								&& tens == '8')) /*adds commas ansd spaces*/
-					{
-						putchar(',');
-						putchar(' ');
-					}
+					putchar(',');
+					putchar(' ');
 				}
 			}
 		}
