@@ -13,15 +13,17 @@ char *str_concat(char *s1, char *s2)
 	unsigned int i, j;
 	char *s;
 
-	strcat(s1, s2);
+	char *s1_copy = strdup(s1);
+	
+	strcat(s1_copy, s2);
 
-	if (s1 == NULL)
+	if (s1_copy == NULL)
 	{
 		i = 0;
 	}
 	else
 	{
-		for (i = 0; s1[i]; i++)
+		for (i = 0; s1_copy[i]; i++)
 			;
 	}
 	i++;
@@ -32,9 +34,9 @@ char *str_concat(char *s1, char *s2)
 		return (NULL);
 
 	for (j = 0; j < i; j++)
-		s[j] = s1[j];
+		s[j] = s1_copy[j];
 
-	s[i] = '\0';
+/*	s[j] = '\0'; */
 
 	return (s);
 }
