@@ -1,4 +1,22 @@
 #include "main.h"
+
+/**
+ * close_file - a function which closes file descriptors
+ * @fd: the file descriptor to be closed
+ */
+void close_file(int fd)
+{
+	int cl;
+
+	cl = close(fd);
+
+	if (cl == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
+}
+
 /**
  * main - Entry point
  * @ac: the number of arguments passed
@@ -38,7 +56,7 @@ int main(int ac, char **av)
 		exit(99);
 	}
 	free(buf);
-	close(file_from);
-	close(file_to);
+	close_file(file_from);
+	close_file(file_to);
 	return (0);
 }
